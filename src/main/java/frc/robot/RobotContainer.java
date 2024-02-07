@@ -5,9 +5,17 @@
 package frc.robot;
 
 import frc.robot.Constants.*;
-import frc.robot.commands.Autos;
-import frc.robot.commands.ExampleCommand;
+import frc.robot.Constants.LED.modes;
+
+import java.util.Map;
+
+import edu.wpi.first.networktables.GenericEntry;
+import edu.wpi.first.wpilibj.shuffleboard.BuiltInWidgets;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.RepeatCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 
@@ -26,21 +34,24 @@ import frc.robot.commands.*;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
+  private final MotorSubsystem m_MotorSubsystem = new MotorSubsystem(); 
+  private final LimitswitchSubsystem m_LimitswitchSubsystem = new LimitswitchSubsystem(); 
+  private final ColourSensorSubsystem m_ColourSensorSubsystem = new ColourSensorSubsystem();
+  private final LedSubsystem m_LedSubsystem = new LedSubsystem();  
+
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController = new CommandXboxController(Gamepads.DRIVER);
   private final CommandXboxController m_operatorController = new CommandXboxController(Gamepads.OPERATOR);
-
-  private final DrivebaseSubsystem m_drivebase = new DrivebaseSubsystem();
-
+      
+    
+  
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
-    // Configure the trigger bindings
 
-    m_drivebase
-        .setDefaultCommand(new DriveCommand(m_driverController::getLeftY, m_driverController::getRightX, m_drivebase));
+    // Configure the trigger bindings
 
     configureBindings();
   }
@@ -66,6 +77,18 @@ public class RobotContainer {
 
     // Drive Controller buttons
     m_driverController.a().whileTrue(m_exampleSubsystem.exampleMethodCommand());
+
+    m_driverController.x().whileTrue(new RepeatCommand(new InstantCommand(() -> m_MotorSubsystem.setTalonSpeed(m_MotorSubsystem.talonSpeed.getDouble(0)))));
+    m_driverController.y().whileTrue(new RepeatCommand(new InstantCommand(() -> m_MotorSubsystem.setSparkSpeed(m_MotorSubsystem.sparkSpeed.getDouble(0)))));
+    m_driverController.x().whileFalse(new InstantCommand(() -> m_MotorSubsystem.setTalonSpeed(0)));
+    m_driverController.y().whileFalse(new InstantCommand(() -> m_MotorSubsystem.setSparkSpeed(0)));
+
+    m_driverController.a().onTrue(new InstantCommand(() -> m_LedSubsystem.setMode(modes.Green)));
+    m_driverController.b().onTrue(new InstantCommand(() -> m_LedSubsystem.setMode(modes.Blue)));
+    m_driverController.leftBumper().onTrue(new InstantCommand(() -> m_LedSubsystem.setMode(modes.oneSpace)));
+
+
+
 
     // Operator Controller buttons
     m_operatorController.a().whileTrue(m_exampleSubsystem.exampleMethodCommand());
