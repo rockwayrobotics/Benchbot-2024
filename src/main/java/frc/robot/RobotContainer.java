@@ -38,6 +38,7 @@ public class RobotContainer {
   private final LimitswitchSubsystem m_LimitswitchSubsystem = new LimitswitchSubsystem(); 
   private final ColourSensorSubsystem m_ColourSensorSubsystem = new ColourSensorSubsystem();
   private final LedSubsystem m_LedSubsystem = new LedSubsystem();  
+  private final ArduinoSubsystem m_ArduinoSubsystem = new ArduinoSubsystem(); 
 
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
