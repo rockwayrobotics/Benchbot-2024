@@ -30,7 +30,8 @@ public class ArduinoSubsystem extends SubsystemBase {
     }
     else{
       int x = (toGet[0] & 0xff) | ((toGet[1] & 0xff) << 8);
-      sDist.set(x); 
+      sDist.set(x);
+
       //sDist.set((int) toGet[0] & 0xffL);
     }
     //sDist.set(aborted ? -1 : (int) toGet[0]);

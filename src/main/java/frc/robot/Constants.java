@@ -36,6 +36,7 @@ public final class Constants {
 
     public static final int LIMITSWITCH = 0; 
     public static final int COLOURMARK = 1; 
+    public static final int BEAMBREAK = 2; 
   }
 
   // Constants for the Drivebase/Robot Driving 
