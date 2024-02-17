@@ -88,7 +88,6 @@ void loop() {
     duration = 0; 
     Serial.print("timed out ");
     Serial.println(echoTime - startTime);
-
-  } 
+ } 
 }
 
