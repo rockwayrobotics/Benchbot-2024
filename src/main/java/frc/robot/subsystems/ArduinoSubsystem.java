@@ -64,7 +64,7 @@ public class ArduinoSubsystem extends SubsystemBase {
    sDist.set(squeed.dist); 
 
    long elapsed = NetworkTablesJNI.now() - timing; 
-   System.out.println(elapsed);
+   //System.out.println(elapsed);
   
   }
 }

@@ -55,6 +55,7 @@ public class LedSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     if (m_mode != m_previous_mode) {
+      m_previous_mode = m_mode; 
       switch (m_mode) {
         case Green:
           green();
