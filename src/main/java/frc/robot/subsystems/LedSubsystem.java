@@ -19,12 +19,18 @@ public class LedSubsystem extends SubsystemBase {
 
     m_led.setLength(m_ledBuffer.getLength());
     m_led.setData(m_ledBuffer);
-    m_previous_mode = m_mode = modes.Green;
+    m_previous_mode = m_mode = modes.None;
     m_led.start();
   }
 
   public void setMode(modes mode) {
     m_mode = mode;
+  }
+
+  private void off(){
+    for (var i = 0; i < m_ledBuffer.getLength(); i++) {
+      m_ledBuffer.setRGB(i, 0, 0, 0);
+    }
   }
 
   private void green() {
@@ -65,6 +71,9 @@ public class LedSubsystem extends SubsystemBase {
           break;
         case oneSpace:
           one_spaced();
+          break;
+        case None:
+          off();
           break;
       }
       m_led.setData(m_ledBuffer);

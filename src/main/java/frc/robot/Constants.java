@@ -58,9 +58,10 @@ public final class Constants {
   // Constants for LEDs 
   public static final class LED {
     public final static int LED_PWM = 0;
-    public final static int LED_LENGTH = 10;
+    public final static int LED_LENGTH = 30;
 
     public static enum modes {
+      None, 
       Green,
       Blue,
       oneSpace,

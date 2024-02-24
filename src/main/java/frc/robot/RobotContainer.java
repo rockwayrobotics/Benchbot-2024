@@ -67,11 +67,11 @@ public class RobotContainer {
    */
   private void configureBindings() {
     // Schedule `ExampleCommand` when `exampleCondition` changes to `true`
-    new Trigger(m_exampleSubsystem::exampleCondition)
-        .onTrue(new ExampleCommand(m_exampleSubsystem));
+    // new Trigger(m_exampleSubsystem::exampleCondition)
+    //     .onTrue(new ExampleCommand(m_exampleSubsystem));
 
-    // Drive Controller buttons
-    m_driverController.a().whileTrue(m_exampleSubsystem.exampleMethodCommand());
+    // // Drive Controller buttons
+    // m_driverController.a().whileTrue(m_exampleSubsystem.exampleMethodCommand());
 
     m_driverController.x().whileTrue(new RepeatCommand(new InstantCommand(() -> m_MotorSubsystem.setTalonSpeed(m_MotorSubsystem.talonSpeed.getDouble(0)))));
     m_driverController.y().whileTrue(new RepeatCommand(new InstantCommand(() -> m_MotorSubsystem.setSparkSpeed(m_MotorSubsystem.sparkSpeed.getDouble(0)))));
@@ -86,7 +86,7 @@ public class RobotContainer {
 
 
     // Operator Controller buttons
-    m_operatorController.a().whileTrue(m_exampleSubsystem.exampleMethodCommand());
+    // m_operatorController.a().whileTrue(m_exampleSubsystem.exampleMethodCommand());
   }
 
   /**
