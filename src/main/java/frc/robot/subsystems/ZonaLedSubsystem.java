@@ -31,7 +31,7 @@ public class ZonaLedSubsystem extends SubsystemBase{
   BufferedImage image;
 
   public ZonaLedSubsystem(){
-    String jerma = "/home/lvuser/deploy/images/heatgradient.png";
+    String jerma = "/home/lvuser/deploy/images/badapple.png";
 
     m_led = new AddressableLED(Constants.LED.LED_PWM);
     m_ledBuffer = new AddressableLEDBuffer(Constants.LED.LED_LENGTH);
