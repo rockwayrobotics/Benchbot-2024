@@ -28,9 +28,9 @@ import frc.robot.commands.*;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-  private final MotorSubsystem m_MotorSubsystem = new MotorSubsystem(); 
+  //private final MotorSubsystem m_MotorSubsystem = new MotorSubsystem(); 
   private final LimitswitchSubsystem m_LimitswitchSubsystem = new LimitswitchSubsystem(); 
-  private final ColourSensorSubsystem m_ColourSensorSubsystem = new ColourSensorSubsystem();
+  //private final ColourSensorSubsystem m_ColourSensorSubsystem = new ColourSensorSubsystem();
   // private final LedSubsystem m_LedSubsystem = new LedSubsystem();  
   private final ArduinoSubsystem m_ArduinoSubsystem = new ArduinoSubsystem(); 
   private final ZonaLedSubsystem m_ZonaLedSubsystem = new ZonaLedSubsystem(); 
@@ -73,10 +73,10 @@ public class RobotContainer {
     // // Drive Controller buttons
     // m_driverController.a().whileTrue(m_exampleSubsystem.exampleMethodCommand());
 
-    m_driverController.x().whileTrue(new RepeatCommand(new InstantCommand(() -> m_MotorSubsystem.setTalonSpeed(m_MotorSubsystem.talonSpeed.getDouble(0)))));
-    m_driverController.y().whileTrue(new RepeatCommand(new InstantCommand(() -> m_MotorSubsystem.setSparkSpeed(m_MotorSubsystem.sparkSpeed.getDouble(0)))));
-    m_driverController.x().whileFalse(new InstantCommand(() -> m_MotorSubsystem.setTalonSpeed(0)));
-    m_driverController.y().whileFalse(new InstantCommand(() -> m_MotorSubsystem.setSparkSpeed(0)));
+    //m_driverController.x().whileTrue(new RepeatCommand(new InstantCommand(() -> m_MotorSubsystem.setTalonSpeed(m_MotorSubsystem.talonSpeed.getDouble(0)))));
+    //m_driverController.y().whileTrue(new RepeatCommand(new InstantCommand(() -> m_MotorSubsystem.setSparkSpeed(m_MotorSubsystem.sparkSpeed.getDouble(0)))));
+    //m_driverController.x().whileFalse(new InstantCommand(() -> m_MotorSubsystem.setTalonSpeed(0)));
+    //m_driverController.y().whileFalse(new InstantCommand(() -> m_MotorSubsystem.setSparkSpeed(0)));
 
     // m_driverController.a().onTrue(new InstantCommand(() -> m_LedSubsystem.setMode(modes.Green)));
     // m_driverController.b().onTrue(new InstantCommand(() -> m_LedSubsystem.setMode(modes.Blue)));

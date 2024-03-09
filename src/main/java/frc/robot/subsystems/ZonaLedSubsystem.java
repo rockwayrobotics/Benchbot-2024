@@ -31,7 +31,7 @@ public class ZonaLedSubsystem extends SubsystemBase{
   BufferedImage image;
 
   public ZonaLedSubsystem(){
-    String jerma = "/home/lvuser/deploy/images/badapple.png";
+    String jerma = "/home/lvuser/deploy/images/seizure.png";
 
     m_led = new AddressableLED(Constants.LED.LED_PWM);
     m_ledBuffer = new AddressableLEDBuffer(Constants.LED.LED_LENGTH);
@@ -52,12 +52,14 @@ public class ZonaLedSubsystem extends SubsystemBase{
     if (++counter >= pacer){
       counter = 0; 
 
+    
       for (var i = 0; i < m_ledBuffer.getLength(); i++) {
         int pixel = image.getRGB(i, row);
         int r = (pixel >> 16) & 0xff; 
         int g = (pixel >> 8) & 0xff;
         int b = (pixel >> 0) & 0xff; 
         m_ledBuffer.setRGB(i, r, g, b);
+        //System.out.println("set LEDS");
       }
 
       m_led.setData(m_ledBuffer);
